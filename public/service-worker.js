@@ -2,14 +2,14 @@ const FILES_TO_CACHE = [
     '/',
     '/index.html',
     '/index.js',
-    '/style.css',
+    '/styles.css',
     '/manifest.webmanifest',
     '/icons/icon-512x512.png',
     '/icons/icon-192x192.png'
 ];
 
 const STATIC_CACHE = "static-cache-v1";
-const RUNTIME_CACHE = "runtime-cache";
+const RUNTIME = "runtime-cache";
 
 self.addEventListener("install", event => {
     event.waitUntil(
@@ -22,7 +22,7 @@ self.addEventListener("install", event => {
 
 // The activate handler takes care of cleaning up old caches.
 self.addEventListener('activate', (event) => {
-    const currentCaches = [PRECACHE, RUNTIME];
+    const currentCaches = [STATIC_CACHE, RUNTIME];
     event.waitUntil(
         caches
             .keys()
